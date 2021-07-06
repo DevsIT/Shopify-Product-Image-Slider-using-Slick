@@ -1,0 +1,17 @@
+<div class="product-main">
+  <div class="top-slider slider slider-for">
+    {% for image in product.images %}
+    <div>
+      <img src="{{ image.src | img_url: "1000x1000" }}">
+    </div>
+    {% endfor %}
+  </div>
+  <div class="bottom-slider slider slider-nav">
+    {% for image in product.images %}
+    <div>
+      <img src="{{ image.src | img_url: "350x350" }}">
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
