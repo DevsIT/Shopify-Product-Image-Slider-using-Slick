@@ -1,17 +1,73 @@
-<div class="product-main">
-  <div class="top-slider slider slider-for">
-    {% for image in product.images %}
-    <div>
-      <img src="{{ image.src | img_url: "1000x1000" }}">
-    </div>
-    {% endfor %}
-  </div>
-  <div class="bottom-slider slider slider-nav">
-    {% for image in product.images %}
-    <div>
-      <img src="{{ image.src | img_url: "350x350" }}">
-    </div>
-    {% endfor %}
-  </div>
 
-</div>
+<style>
+.bottom-slider.slider.slider-nav {
+  margin-top: 10px;
+}
+.slick-slide img {
+  margin: 0 auto;
+}
+  .bottom-slider .slick-slide {
+padding: 0 3px;
+}
+</style>
+
+
+
+<div class="product-main">
+        <div class="top-slider slider slider-for">
+          {% for image in product.images %}
+          <div class="slick-slide">
+            <img src="{{ image.src | img_url: "600x600" }}">
+          </div>
+          {% endfor %}
+        </div>
+        <div class="bottom-slider slider slider-nav">
+          {% for image in product.images %}
+          <div class="slick-slide">
+            <img src="{{ image.src | img_url: "150x150" }}">
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+
+
+      <script>
+        $('.slider-for').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          fade: true,
+          asNavFor: '.slider-nav',
+        });
+        $('.slider-nav').slick({
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          dots: false,
+          arrows: false,
+          centerMode: false,
+          focusOnSelect: true,
+          responsive: [
+            {
+              breakpoint: 1280,
+              settings: {
+                slidesToShow: 4
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 4
+              }
+            },
+            {
+              breakpoint: 608,
+              settings: {
+                slidesToShow: 4
+              }
+            }
+
+          ]
+        });
+      </script>
